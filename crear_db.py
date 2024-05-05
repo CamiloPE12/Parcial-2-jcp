@@ -1,32 +1,37 @@
-# importar la librería para gestionar la DB
 import sqlite3
+# Establecer la conexión a la base de datos
+with sqlite3.connect('mi_base_de_datos.db') as conexion:
+    cursor = conexion.cursor()
 
-# establecer la conexion
+    # Nombre de la tabla
+    nombre_tabla = "ProductosItienda"
 
-# eliminar la tabla
+    try:
+        # Eliminar la tabla si existe
+        cursor.execute(f"DROP TABLE IF EXISTS {nombre_tabla}")
 
-# crear la tabla
-cursor.execute("""
+        # Crear la tabla
+        cursor.execute(f'''CREATE TABLE {nombre_tabla} (
+                            id INTEGER PRIMARY KEY,
+                            categoria TEXT,
+                            marca TEXT,
+                            modelo TEXT,
+                            descripcion TEXT,
+                            precio INTEGER
+                        )''')
 
-""")
+        # Insertar los datos iniciales
+        datos = [
+            (101, 'Celular', 'Apple', 'iPhone 11', '128GB+6GB RAM, Chip A13', 1100000),
+            (104, 'Celular', 'Apple', 'iPhone 12', '256GB+8GB RAM, Chip A14', 1400000),
+            (201, 'Celular', 'Apple', 'iPhone 13', '256GB+8GB RAM, chip A15 BIONIC', 2000000),
+            (203, 'Celular', 'Apple', 'iPhone 14', '256GB+8GB RAM, A15 BIONIC', 2500000),
+            (207, 'Celular', 'Apple', 'iPhone 15', '1TB+8GB RAM, A16 BIONIC ', 3400000),
+        ]
 
-# insertar los datos iniciales
-datos = [
-  (101, 'Celular', 'Apple', 'iPhone 15', '128GB+6GB RAM, Pantalla 6.1p, Chip A16 Bionic, cable Tipo C, Cámara 48MP', 4599900),
-  (104, 'Celular', 'Samsung', 'Galaxy S23', '256GB+8GB RAM, Pantalla 6p, Chip SM8550 Octacore, cámaras 50MP+10MP+12MP', 3499900),
-  (201, 'Portátil', 'Apple', 'Macbook Pro M2', 'Chip Apple M2 Pro 10cores+16gpu, 16Gb RAM, 512Gb SSD, Pantalla 13p, Gráficos ', 15749900),
-  (203, 'Portátil', 'Asus', 'Laptop ROG Zephyrus', 'Cpu RYZEN 9-6900HS, 24Gb RAM, 2Tb SSD, Gráficos RTX-3060 6GB, Pantalla 15,6', 8819900),
-  (207, 'Portátil', 'HP', 'Laptop 14-fq1012la', 'Cpu AMD Ryzen 5, 12Gb RAM, 256Gb SSD, Pantalla 14p, Wifi, Lan, 2 USB-C, HDMI, ', 1799000),
-  (208, 'Portátil', 'Lenovo', 'Todo en Uno', 'Cpu AMD RYZEN 7-5700U, 2Tb SSD, 8Gb RAM, Pantalla 23.8, Wifi, Lan, 2 USB-C, HDMI', 4569900),
-  (301, 'Tablet', 'Apple', 'iPad 10gen', '64Gb, Pantalla 10.9p, USB-C, Wifi', 2799000),
-  (302, 'Tablet', 'Amazon', 'Kindle Oasis 10gen', '32Gb, Pantalla 7p, USB-C, Wifi', 1390000),
-  (304, 'Tablet', 'Huawei', 'MatePad SE 10.1', '128Gb, Pantalla 10.1p 2K, USB-C, Wifi', 931000),
-]
+        cursor.executemany(f"INSERT INTO {nombre_tabla} VALUES (?, ?, ?, ?, ?, ?)", datos)
 
-cursor.executemany("""
+        print("La tabla y los datos se han insertado correctamente.")
 
-""", datos)
-
-# grabar
-conexion.commit()
-conexion.close()
+    except sqlite3.Error as error:
+        print("Error al trabajar con la base de datos:", error)

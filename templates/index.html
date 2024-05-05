@@ -1,8 +1,67 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Celulares</title>
+    <link rel="stylesheet" href="../static/css/estilo.css">
+</head>
+<body>
+    <header>
+      <section>
+        <iframe style="border-radius: 12px; float: left;" src="https://open.spotify.com/embed/track/2YWjW3wwQIBLNhxWKBQd16?utm_source=generator" width="20%" height="150" frameBorder="" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </section>
+      <h1 style="margin-right: 250px;">Itienda Col</h1>
+        <nav>
+            <ul style="margin-right: 250px;">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./productos.html">Productos</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>¡Tu mejor opcion, Itienda Col!</h1>
+        <h3>Si es tu primera compra con nosotros resive el 10% de descuento!!!</h3>
+        <section class="productos">
+            <article>
+                <img src="../static/fotos/iphone11.png" alt="Celular 1" >
+                <h2>Iphone 11</h2>
+                <p>Precio: $1'100.000</p>
+                <button>Comprar</button>
+            </article>
+            <article>
+                <img src="../static/fotos/iphone12.png" alt="Celular 2">
+                <h2>Iphone 12</h2>
+                <p>Precio: 1'400.000</p>
+                <button>Comprar</button>
+            </article>
+            <article>
+              <img src="../static/fotos/iphone13.png" alt="Celular 3">
+              <h2>Iphone 13</h2>
+              <p>Precio: 2'000.000</p>
+              <button>Comprar</button>
+          </article>
+          <article>
+            <img src="../static/fotos/iphone14.png" alt="Celular 4">
+            <h2>Iphone 14</h2>
+            <p>Precio: 2'500.000</p>
+            <button>Comprar</button>
+        </article>
+        <article>
+          <img src="../static/fotos/iphone15.png" alt="Celular 5">
+          <h2>Iphone 15</h2>
+          <p>Precio: 3'400.000</p>
+          <button>Comprar</button>
+      </article>
+            <!-- Agrega más artículos según sea necesario -->
+        </section>
 
-{% block titulo %}Tienda Virtual{% endblock %}
+    </main>
 
-{% block contenido %}
-
-
-{% endblock %}
+    <footer>
+        <p>&copy; 2024 Itienda</p>
+    </footer>
+</body>
+</html>
