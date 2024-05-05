@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Celulares</title>
+    <title>Tienda de Celulares - Productos</title>
     <link rel="stylesheet" href="../static/css/estilo.css">
 </head>
 <body>
@@ -19,8 +19,18 @@
     </header>
     
     <main>
-       <h1> Aqui puede ver una lista de nuestros productos: </h1>
-       
+        <h1>Aquí puede ver una lista de nuestros productos:</h1>
+        <ul>
+            {% for producto in productos %}
+            <li>
+                <h2>{{ producto[3] }}</h2>
+                <p>Categoría: {{ producto[1] }}</p>
+                <p>Marca: {{ producto[2] }}</p>
+                <p>Descripción: {{ producto[4] }}</p>
+                <p>Precio: ${{ producto[5] }}</p>
+            </li>
+            {% endfor %}
+        </ul>
     </main>
 
     <footer>
